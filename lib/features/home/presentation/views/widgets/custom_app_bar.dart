@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class CustomAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 35),
               child: Text(
-                "Calories Tracker",
+                title,
                 style: Styles.textStyle18.copyWith(
                   color: Colors.white,
                 ),

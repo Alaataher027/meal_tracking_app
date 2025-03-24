@@ -13,7 +13,9 @@ class HomeViewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomAppBar(),
+        CustomAppBar(
+          title: 'Calories Tracker',
+        ),
         SizedBox(
           height: 10,
         ),
