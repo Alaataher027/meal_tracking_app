@@ -7,10 +7,7 @@ class MealInitial extends MealState {}
 
 class MealLoading extends MealState {}
 
-class MealLoaded extends MealState {
-  final List<MealModel> meals;
-  MealLoaded(this.meals);
-}
+class MealSuccess extends MealState {}
 
 class MealError extends MealState {
   final String message;
