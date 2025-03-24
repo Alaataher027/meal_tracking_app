@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_button.dart';
 import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_text_field.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/custom_app_bar.dart';
