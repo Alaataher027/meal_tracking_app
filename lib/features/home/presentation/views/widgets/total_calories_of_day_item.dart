@@ -11,7 +11,7 @@ class TotalCaloriesOfDayItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
       child: Container(
-        height: 250,
+        height: 200,
         // width: 70,
         decoration: BoxDecoration(
           color: kPrimaryColor,

@@ -12,7 +12,6 @@ class MealItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
-        vertical: 4,
       ),
       child: Card(
         elevation: 0,
