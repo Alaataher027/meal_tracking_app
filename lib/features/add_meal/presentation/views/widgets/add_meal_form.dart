@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
 import 'package:meal_tracking_app/features/add_meal/presentation/manager/cubits/cubit/add_meal_cubit.dart';
@@ -62,105 +65,126 @@ class _AddMealFormState extends State<AddMealForm> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: Column(
-        children: [
-          Container(
-            height: 200,
-            width: 200,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(12),
-              image: DecorationImage(
-                image: selectedImage != null
-                    ? FileImage(selectedImage!)
-                    : const AssetImage("assets/images/upload_image.png")
-                        as ImageProvider,
-                fit: BoxFit.cover,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: pickImage,
+              child: Container(
+                padding: EdgeInsets.only(top: 20, left: 20),
+                height: 200,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: selectedImage != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.file(
+                          selectedImage!,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: SvgPicture.asset(
+                          "assets/images/upload_photo.svg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          CustomTextField(
-            onSavedS: (value) {
-              mealName = value;
-            },
-            hint: "Meal name",
-            isNumerical: false,
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          CustomTextField(
-            onSavedI: (value) {
-              calories = value;
-            },
-            hint: "Calories",
-            isNumerical: true,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Row(
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                CustomButton(
-                  onTap: pickDate,
-                  title: "Pick Time",
+                Column(
+                  children: [
+                    CustomTextField(
+                      onSavedS: (value) {
+                        mealName = value;
+                      },
+                      hint: "Meal name",
+                      isNumerical: false,
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    CustomTextField(
+                      onSavedI: (value) {
+                        calories = value;
+                      },
+                      hint: "Calories",
+                      isNumerical: true,
+                    ),
+                  ],
                 ),
-                Spacer(),
-                CustomButton(
-                  onTap: pickImage,
-                  title: "Select Image",
-                )
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: pickDate,
+                      icon: Icon(
+                        FontAwesomeIcons.calendarPlus,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      selectedDate != null
+                          ? "${selectedDate!.year}-${selectedDate!.month}-${selectedDate!.day}"
+                          : "",
+                      style: Styles.textStyle16,
+                    ),
+                  ],
+                ),
               ],
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            selectedDate != null
-                ? "${selectedDate!.year}-${selectedDate!.month}-${selectedDate!.day}"
-                : "Select a date",
-            style: Styles.textStyle16,
-          ),
-          BlocBuilder<AddMealCubit, AddMealState>(
-            builder: (context, state) {
-              return CustomButton(
-                isLodaing: state is AddMealLoading ? true : false,
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    if (selectedDate == null || selectedImage == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Please select both date and image"),
-                        ),
-                      );
-                      return;
-                    }
-                    MealModel meal = MealModel(
-                      mealName: mealName,
-                      calories: calories,
-                      dateTime: selectedDate,
-                      imagePath: selectedImage!.path,
-                    );
+            SizedBox(
+              height: 30,
+            ),
+            BlocBuilder<AddMealCubit, AddMealState>(
+              builder: (context, state) {
+                return Row(
+                  children: [
+                    Spacer(),
+                    CustomButton(
+                      isLodaing: state is AddMealLoading ? true : false,
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          if (selectedDate == null || selectedImage == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content:
+                                    Text("Please select both date and image"),
+                              ),
+                            );
+                            return;
+                          }
+                          MealModel meal = MealModel(
+                            mealName: mealName,
+                            calories: calories,
+                            dateTime: selectedDate,
+                            imagePath: selectedImage!.path,
+                          );
 
-                    BlocProvider.of<AddMealCubit>(context).addMeal(meal);
-                    print(meal.mealName);
-                    print(meal.calories);
-                    print(meal.dateTime);
-                    print(meal.imagePath);
-                  }
-                },
-                title: "Save",
-              );
-            },
-          )
-        ],
+                          BlocProvider.of<AddMealCubit>(context).addMeal(meal);
+                          print(meal.mealName);
+                          print(meal.calories);
+                          print(meal.dateTime);
+                          print(meal.imagePath);
+                        }
+                        GoRouter.of(context).pop();
+                      },
+                      title: "Save",
+                    ),
+                  ],
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }

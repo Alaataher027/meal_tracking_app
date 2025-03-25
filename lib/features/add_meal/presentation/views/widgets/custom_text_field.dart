@@ -21,31 +21,34 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: TextFormField(
-        keyboardType: isNumerical ? TextInputType.number : TextInputType.text,
-        onChanged: onChanged,
-        onSaved: (value) {
-          if (isNumerical) {
-            onSavedI?.call(int.tryParse(value ?? ''));
-          } else {
-            onSavedS?.call(value);
-          }
-        },
-        validator: (value) {
-          if (value?.isEmpty ?? true) {
-            return "Field is required";
-          } else {
-            return null;
-          }
-        },
-        cursorColor: Colors.black,
-        maxLines: maxLines,
-        decoration: InputDecoration(
-          hintText: hint,
-          hintStyle: TextStyle(color: Colors.black),
-          enabledBorder: buildBorder(),
-          errorBorder: buildBorder((Colors.red)),
-          focusedBorder: buildBorder(Colors.black),
+      child: SizedBox(
+        width: 220,
+        child: TextFormField(
+          keyboardType: isNumerical ? TextInputType.number : TextInputType.text,
+          onChanged: onChanged,
+          onSaved: (value) {
+            if (isNumerical) {
+              onSavedI?.call(int.tryParse(value ?? ''));
+            } else {
+              onSavedS?.call(value);
+            }
+          },
+          validator: (value) {
+            if (value?.isEmpty ?? true) {
+              return "Field is required";
+            } else {
+              return null;
+            }
+          },
+          cursorColor: Colors.black,
+          maxLines: maxLines,
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(color: const Color.fromARGB(255, 133, 133, 133)),
+            enabledBorder: buildBorder(),
+            errorBorder: buildBorder((Colors.red)),
+            focusedBorder: buildBorder(Colors.black),
+          ),
         ),
       ),
     );
