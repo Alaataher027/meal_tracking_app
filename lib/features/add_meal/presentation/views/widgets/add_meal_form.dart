@@ -11,6 +11,7 @@ import 'package:meal_tracking_app/features/add_meal/presentation/manager/cubits/
 import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_button.dart';
 import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_text_field.dart';
 import 'package:meal_tracking_app/features/home/data/models/meal_model.dart';
+import 'package:meal_tracking_app/features/home/presentation/manager/cubits/cubit/meal_cubit.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AddMealForm extends StatefulWidget {
@@ -174,8 +175,8 @@ class _AddMealFormState extends State<AddMealForm> {
                           print(meal.calories);
                           print(meal.dateTime);
                           print(meal.imagePath);
+                          GoRouter.of(context).pop();
                         }
-                        GoRouter.of(context).pop();
                       },
                       title: "Save",
                     ),

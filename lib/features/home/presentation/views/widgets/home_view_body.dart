@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
+import 'package:meal_tracking_app/features/home/presentation/manager/cubits/cubit/meal_cubit.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/meals_list_view.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/sort_menu.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/total_calories_of_day_item.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/yearly_dayes_list.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
+
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+  @override
+  void initState() {
+    BlocProvider.of<MealCubit>(context).featchAllMeals();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

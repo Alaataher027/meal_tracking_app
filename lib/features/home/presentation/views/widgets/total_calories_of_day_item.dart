@@ -9,9 +9,9 @@ class TotalCaloriesOfDayItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: Container(
-        height: 200,
+        height: 170,
         // width: 70,
         decoration: BoxDecoration(
           color: kPrimaryColor,

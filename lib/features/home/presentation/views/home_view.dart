@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meal_tracking_app/core/utils/app_router.dart';
+import 'package:meal_tracking_app/features/home/presentation/manager/cubits/cubit/meal_cubit.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -21,7 +23,10 @@ class HomeView extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      body: HomeViewBody(),
+      body: BlocProvider(
+        create: (context) => MealCubit()..featchAllMeals(),
+        child: HomeViewBody(),
+      ),
     );
   }
 }

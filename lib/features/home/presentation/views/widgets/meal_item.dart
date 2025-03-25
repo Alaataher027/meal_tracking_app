@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meal_tracking_app/constants.dart';
 import 'package:meal_tracking_app/core/utils/assets.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
+import 'package:meal_tracking_app/features/home/data/models/meal_model.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key});
+  const MealItem({super.key, required this.mealModel});
+  final MealModel mealModel;
 //(name, calories, time, *photo)
   @override
   Widget build(BuildContext context) {
@@ -22,11 +26,29 @@ class MealItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                AssetsData.mealTest,
-                width: 130,
-                height: 130,
-              ),
+              child: mealModel.imagePath != null &&
+                      mealModel.imagePath!.isNotEmpty
+                  ? Image.file(
+                      File(mealModel
+                          .imagePath!), // Load from file instead of asset
+                      width: 110,
+                      height: 110,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          'assets/images/placeholder.png', // Fallback image
+                          width: 130,
+                          height: 130,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    )
+                  : Image.asset(
+                      AssetsData.mealTest, // Default image when no path exists
+                      width: 130,
+                      height: 130,
+                      fit: BoxFit.cover,
+                    ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -34,7 +56,7 @@ class MealItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    " Tuna Salad",
+                    mealModel.mealName ?? "not found",
                     style: Styles.textStyle15,
                   ),
                   const SizedBox(
@@ -47,7 +69,7 @@ class MealItem extends StatelessWidget {
                         size: 18,
                       ),
                       Text(
-                        " Calories",
+                        mealModel.calories.toString(),
                         style: Styles.textStyle16,
                       ),
                     ],
@@ -62,7 +84,7 @@ class MealItem extends StatelessWidget {
                         size: 18,
                       ),
                       Text(
-                        " Time",
+                        "${mealModel.dateTime!.year}/${mealModel.dateTime!.month}/${mealModel.dateTime!.day}",
                         style: Styles.textStyle16,
                       ),
                     ],
