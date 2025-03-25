@@ -175,7 +175,7 @@ class _AddMealFormState extends State<AddMealForm> {
                           print(meal.calories);
                           print(meal.dateTime);
                           print(meal.imagePath);
-                          GoRouter.of(context).pop();
+                          // GoRouter.of(context).pop();
                         }
                       },
                       title: "Save",

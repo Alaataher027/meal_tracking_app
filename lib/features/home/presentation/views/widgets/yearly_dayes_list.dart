@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:meal_tracking_app/constants.dart';
+import 'package:meal_tracking_app/features/home/presentation/manager/cubits/cubit/meal_cubit.dart';
 
 class YearlyDaysList extends StatefulWidget {
   const YearlyDaysList({super.key});
@@ -51,6 +53,8 @@ class _YearlyDaysListState extends State<YearlyDaysList> {
     setState(() {
       selectedIndex = index;
     });
+
+    BlocProvider.of<MealCubit>(context).filterMealsByDate(daysOfYear[index]);
   }
 
   @override

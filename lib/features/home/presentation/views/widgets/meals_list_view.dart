@@ -12,33 +12,32 @@ class MealsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MealCubit, MealState>(
       builder: (context, state) {
-        if (state is MealSuccess) {
-          List<MealModel> listOfMeals =
-              BlocProvider.of<MealCubit>(context).mealsList ?? [];
+        final mealCubit = BlocProvider.of<MealCubit>(context);
+        List<MealModel> listOfMeals =
+            mealCubit.filteredMeals ?? mealCubit.mealsList ?? [];
 
-          return RefreshIndicator(
-            onRefresh: () async {
-              BlocProvider.of<MealCubit>(context).featchAllMeals();
-            },
-            child: listOfMeals.isEmpty
-                ? SingleChildScrollView(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      child: const Center(child: NoMealAddedYet()),
-                    ),
-                  )
-                : ListView.builder(
-                    itemCount: listOfMeals.length,
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) {
-                      return MealItem(mealModel: listOfMeals[index]);
-                    },
+        return RefreshIndicator(
+          onRefresh: () async {
+            await mealCubit.featchAllMeals();
+            mealCubit
+                .filterMealsByDate(mealCubit.selectedDate ?? DateTime.now());
+          },
+          child: listOfMeals.isEmpty
+              ? SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    child: const Center(child: NoMealAddedYet()),
                   ),
-          );
-        } else {
-          return const Center(child: CircularProgressIndicator());
-        }
+                )
+              : ListView.builder(
+                  itemCount: listOfMeals.length,
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (context, index) {
+                    return MealItem(mealModel: listOfMeals[index]);
+                  },
+                ),
+        );
       },
     );
   }

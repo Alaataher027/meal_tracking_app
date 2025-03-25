@@ -24,7 +24,7 @@ class HomeView extends StatelessWidget {
         ),
       ),
       body: BlocProvider(
-        create: (context) => MealCubit()..featchAllMeals(),
+        create: (context) => MealCubit(),
         child: HomeViewBody(),
       ),
     );

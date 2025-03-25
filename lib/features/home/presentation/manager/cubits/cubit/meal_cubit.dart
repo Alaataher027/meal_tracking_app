@@ -9,13 +9,16 @@ part 'meal_state.dart';
 class MealCubit extends Cubit<MealState> {
   MealCubit() : super(MealInitial());
   List<MealModel>? mealsList;
+  List<MealModel> filteredMeals = [];
+  int totalCalories = 0;
+  DateTime? selectedDate; // This can be null initially
 
   featchAllMeals() async {
-    emit(MealLoading()); // Add this state
+    emit(MealLoading());
     try {
       var mealsBox = Hive.box<MealModel>(kMealsBox);
       mealsList = mealsBox.values.toList();
-      emit(MealSuccess());
+      applyFiltersAndSort();
     } catch (e) {
       emit(MealFailure(e.toString()));
     }
@@ -23,31 +26,43 @@ class MealCubit extends Cubit<MealState> {
 
   void sortMeals(String criteria) {
     if (criteria == "name") {
-      mealsList?.sort(
-        (a, b) => (a.mealName ?? "").compareTo(b.mealName ?? ""),
-      );
+      mealsList?.sort((a, b) => (a.mealName ?? "").compareTo(b.mealName ?? ""));
     } else if (criteria == "calories") {
-      mealsList?.sort(
-        (a, b) => (a.calories ?? 0).compareTo(b.calories ?? 0),
-      );
+      mealsList?.sort((a, b) => (a.calories ?? 0).compareTo(b.calories ?? 0));
     } else if (criteria == "time") {
-      mealsList?.sort(
-        (a, b) => (a.dateTime ?? DateTime.now()).compareTo(
-          b.dateTime ?? DateTime.now(),
-        ),
-      );
+      mealsList?.sort((a, b) => (a.dateTime ?? DateTime(2000)).compareTo(
+            b.dateTime ?? DateTime(2000),
+          ));
     }
+    applyFiltersAndSort();
+  }
+
+  void filterMealsByDate(DateTime? date) {
+    selectedDate = date ?? DateTime.now(); // Ensure it's never null
+    applyFiltersAndSort();
+  }
+
+  void applyFiltersAndSort() {
+    if (selectedDate != null) {
+      filteredMeals = mealsList
+              ?.where((meal) =>
+                  meal.dateTime != null &&
+                  isSameDay(meal.dateTime!, selectedDate!))
+              .toList() ??
+          [];
+    } else {
+      filteredMeals = mealsList ?? [];
+    }
+
+    totalCalories =
+        filteredMeals.fold(0, (sum, meal) => sum + (meal.calories ?? 0));
+
     emit(MealSuccess());
   }
 
-  // Future<void> deleteMeal(int index) async {
-  //   try {
-  //     var mealsBox = Hive.openBox<MealModel>(kMealsBox);
-  //     await mealsBox.deleteAt(index);
-  //     mealsList?.removeAt(index);
-  //     emit(MealSuccess());
-  //   } on Exception catch (e) {
-  //     emit(MealError(e.toString()));
-  //   }
-  // }
+  bool isSameDay(DateTime mealDate, DateTime selectedDate) {
+    return mealDate.year == selectedDate.year &&
+        mealDate.month == selectedDate.month &&
+        mealDate.day == selectedDate.day;
+  }
 }
