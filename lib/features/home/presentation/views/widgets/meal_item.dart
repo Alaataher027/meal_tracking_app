@@ -82,7 +82,7 @@ class MealItem extends StatelessWidget {
                       children: [
                         const Icon(FontAwesomeIcons.fire, size: 18),
                         Text(
-                          mealModel.calories.toString(),
+                          " ${mealModel.calories.toString()} Cal",
                           style: Styles.textStyle16,
                         ),
                       ],
@@ -92,7 +92,7 @@ class MealItem extends StatelessWidget {
                       children: [
                         const Icon(FontAwesomeIcons.solidClock, size: 18),
                         Text(
-                          "${mealModel.dateTime!.year}/${mealModel.dateTime!.month}/${mealModel.dateTime!.day}",
+                          " ${mealModel.dateTime!.year}/${mealModel.dateTime!.month}/${mealModel.dateTime!.day}",
                           style: Styles.textStyle16,
                         ),
                       ],
