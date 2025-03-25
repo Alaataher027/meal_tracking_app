@@ -22,13 +22,14 @@ class AddMealViewBody extends StatelessWidget {
           child: BlocConsumer<AddMealCubit, AddMealState>(
             listener: (context, state) {
               if (state is AddMealFailure) {
-                print("failed");
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.errMessage)),
+                );
               }
               if (state is AddMealSuccess) {
                 BlocProvider.of<MealCubit>(context).featchAllMeals();
-                GoRouter.of(context).pop(); //
+                Navigator.of(context).pop();
               }
-              // TODO: implement listener
             },
             builder: (context, state) {
               return AddMealForm();

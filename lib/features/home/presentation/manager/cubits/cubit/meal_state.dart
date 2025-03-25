@@ -9,7 +9,7 @@ class MealLoading extends MealState {}
 
 class MealSuccess extends MealState {}
 
-class MealError extends MealState {
+class MealFailure extends MealState {
   final String message;
-  MealError(this.message);
+  MealFailure(this.message);
 }

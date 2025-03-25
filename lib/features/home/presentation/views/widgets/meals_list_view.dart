@@ -15,20 +15,22 @@ class MealsListView extends StatelessWidget {
           List<MealModel> listOfMeals =
               BlocProvider.of<MealCubit>(context).mealsList ?? [];
 
-          if (listOfMeals.isEmpty) {
-            return const Center(child: Text("No meals added yet"));
-          }
-
-          return ListView.builder(
-            itemCount: listOfMeals.length,
-            padding: EdgeInsets.zero,
-            itemBuilder: (context, index) {
-              return MealItem(mealModel: listOfMeals[index]);
+          return RefreshIndicator(
+            onRefresh: () async {
+              BlocProvider.of<MealCubit>(context).featchAllMeals();
             },
+            child: listOfMeals.isEmpty
+                ? const Center(child: Text("No meals added yet"))
+                : ListView.builder(
+                    itemCount: listOfMeals.length,
+                    padding: EdgeInsets.zero,
+                    itemBuilder: (context, index) {
+                      return MealItem(mealModel: listOfMeals[index]);
+                    },
+                  ),
           );
         } else {
-          return const Center(
-              child: CircularProgressIndicator()); // Show loading state
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

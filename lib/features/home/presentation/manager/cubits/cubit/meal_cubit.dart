@@ -10,10 +10,15 @@ class MealCubit extends Cubit<MealState> {
   MealCubit() : super(MealInitial());
   List<MealModel>? mealsList;
 
-  featchAllMeals() {
-    var mealsBox = Hive.box<MealModel>(kMealsBox);
-    mealsList = mealsBox.values.toList();
-    emit(MealSuccess());
+  featchAllMeals() async {
+    emit(MealLoading()); // Add this state
+    try {
+      var mealsBox = Hive.box<MealModel>(kMealsBox);
+      mealsList = mealsBox.values.toList();
+      emit(MealSuccess());
+    } catch (e) {
+      emit(MealFailure(e.toString()));
+    }
   }
 
   void sortMeals(String criteria) {
