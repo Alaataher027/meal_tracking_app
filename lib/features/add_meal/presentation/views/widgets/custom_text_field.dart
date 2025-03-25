@@ -5,14 +5,16 @@ class CustomTextField extends StatelessWidget {
       {super.key,
       required this.hint,
       this.maxLines = 1,
-      this.onSaved,
+      this.onSavedS,
+      this.onSavedI,
       this.onChanged,
       required this.isNumerical});
 
   final String hint;
   final int maxLines;
   final bool isNumerical;
-  final void Function(String?)? onSaved;
+  final void Function(String?)? onSavedS;
+  final void Function(int?)? onSavedI;
   final Function(String?)? onChanged;
 
   @override
@@ -22,7 +24,13 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         keyboardType: isNumerical ? TextInputType.number : TextInputType.text,
         onChanged: onChanged,
-        onSaved: onSaved,
+        onSaved: (value) {
+          if (isNumerical) {
+            onSavedI?.call(int.tryParse(value ?? ''));
+          } else {
+            onSavedS?.call(value);
+          }
+        },
         validator: (value) {
           if (value?.isEmpty ?? true) {
             return "Field is required";
