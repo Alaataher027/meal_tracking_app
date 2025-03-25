@@ -12,8 +12,7 @@ class MealsListView extends StatelessWidget {
     return BlocBuilder<MealCubit, MealState>(
       builder: (context, state) {
         if (state is MealSuccess) {
-          List<MealModel> listOfMeals =
-              BlocProvider.of<MealCubit>(context).mealsList ?? [];
+          List<MealModel> listOfMeals = BlocProvider.of<MealCubit>(context).mealsList ?? [];
 
           return RefreshIndicator(
             onRefresh: () async {
@@ -36,3 +35,4 @@ class MealsListView extends StatelessWidget {
     );
   }
 }
+
