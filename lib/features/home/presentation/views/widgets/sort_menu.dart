@@ -22,10 +22,6 @@ class SortMenu extends StatelessWidget {
           value: "calories",
           child: Text("Sort by Calories"),
         ),
-        const PopupMenuItem(
-          value: "time",
-          child: Text("Sort by Time"),
-        ),
       ],
       icon: const Icon(
         FontAwesomeIcons.sort,

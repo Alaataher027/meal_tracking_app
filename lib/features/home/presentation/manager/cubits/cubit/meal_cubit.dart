@@ -29,16 +29,12 @@ class MealCubit extends Cubit<MealState> {
       mealsList?.sort((a, b) => (a.mealName ?? "").compareTo(b.mealName ?? ""));
     } else if (criteria == "calories") {
       mealsList?.sort((a, b) => (a.calories ?? 0).compareTo(b.calories ?? 0));
-    } else if (criteria == "time") {
-      mealsList?.sort((a, b) => (a.dateTime ?? DateTime(2000)).compareTo(
-            b.dateTime ?? DateTime(2000),
-          ));
     }
     applyFiltersAndSort();
   }
 
   void filterMealsByDate(DateTime? date) {
-    selectedDate = date ?? DateTime.now(); // Ensure it's never null
+    selectedDate = date ?? DateTime.now();
     applyFiltersAndSort();
   }
 

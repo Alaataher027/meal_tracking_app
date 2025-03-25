@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meal_tracking_app/core/utils/app_router.dart';
+import 'package:meal_tracking_app/features/splash/presentation/views/widgets/logo_widget.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -12,6 +13,7 @@ class SplashView extends StatelessWidget {
     });
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: splashTitle(),
     );
   }
@@ -23,7 +25,7 @@ class splashTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Your Calories Tracker"),
+      child: LogoWidget(),
     );
   }
 }

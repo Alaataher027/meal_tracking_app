@@ -23,29 +23,46 @@ class TotalCaloriesOfDayItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(18),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      DateTime today = DateTime.now();
+                      BlocProvider.of<MealCubit>(context)
+                          .filterMealsByDate(today);
+                    },
+                    icon: Icon(
+                      FontAwesomeIcons.calendarDay,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "$totalCalories",
-                        style: Styles.textStyle50,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "$totalCalories",
+                            style: Styles.textStyle50,
+                          ),
+                          Text(
+                            "Total calories of the day",
+                            style: Styles.textStyle14,
+                          )
+                        ],
                       ),
-                      Text(
-                        "Total calories of the day",
-                        style: Styles.textStyle14,
+                      Spacer(),
+                      Icon(
+                        FontAwesomeIcons.fire,
+                        size: 65,
                       )
                     ],
                   ),
-                  Spacer(),
-                  Icon(
-                    FontAwesomeIcons.fire,
-                    size: 65,
-                  )
                 ],
               ),
             ),
