@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meal_tracking_app/core/utils/app_router.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, this.icon});
   final String title;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
                 GoRouter.of(context).push(AppRouter.KSearchView);
               },
               child: Icon(
-                FontAwesomeIcons.magnifyingGlass,
+                icon,
                 color: const Color.fromARGB(255, 0, 0, 0),
               ),
             ),
