@@ -11,10 +11,10 @@ class SearchMealGrid extends StatelessWidget {
     List<String> images = [
       AssetsData.mealTest,
       AssetsData.mealTest,
+      AssetsData.mealTest3,
       AssetsData.mealTest2,
       AssetsData.mealTest2,
-      AssetsData.mealTest2,
-      AssetsData.mealTest2,
+      AssetsData.mealTest3,
       AssetsData.mealTest2,
       AssetsData.mealTest2,
       AssetsData.mealTest2,

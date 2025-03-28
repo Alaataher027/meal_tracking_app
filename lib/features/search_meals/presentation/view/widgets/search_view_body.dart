@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_text_field.dart';
+import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/filter_item.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/search_meal_grid.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -17,6 +18,7 @@ class SearchViewBody extends StatelessWidget {
           isNumerical: false,
           icon: Icon(Icons.search),
         ),
+        ListofCatigories(),
         SearchMealGrid()
       ],
     );
