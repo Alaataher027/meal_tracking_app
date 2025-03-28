@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meal_tracking_app/core/utils/app_router.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -11,30 +13,33 @@ class CustomAppBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: Colors.black,
+        color: Colors.white,
       ),
       height: 80,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.only(
+          left: 15,
+          right: 15,
+        ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 35),
-              child: Text(
-                title,
-                style: Styles.textStyle18.copyWith(
-                  color: Colors.white,
-                ),
+            Text(
+              title,
+              style: Styles.textStyle18.copyWith(
+                color: const Color.fromARGB(255, 0, 0, 0),
               ),
             ),
             Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(top: 35),
+            GestureDetector(
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.KSearchView);
+              },
               child: Icon(
-                FontAwesomeIcons.fire,
-                color: Colors.white,
+                FontAwesomeIcons.magnifyingGlass,
+                color: const Color.fromARGB(255, 0, 0, 0),
               ),
-            )
+            ),
           ],
         ),
       ),

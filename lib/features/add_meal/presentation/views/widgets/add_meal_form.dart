@@ -103,22 +103,28 @@ class _AddMealFormState extends State<AddMealForm> {
               children: [
                 Column(
                   children: [
-                    CustomTextField(
-                      onSavedS: (value) {
-                        mealName = value;
-                      },
-                      hint: "Meal name",
-                      isNumerical: false,
+                    SizedBox(
+                      width: 220,
+                      child: CustomTextField(
+                        onSavedS: (value) {
+                          mealName = value;
+                        },
+                        hint: "Meal name",
+                        isNumerical: false,
+                      ),
                     ),
                     SizedBox(
                       height: 12,
                     ),
-                    CustomTextField(
-                      onSavedI: (value) {
-                        calories = value;
-                      },
-                      hint: "Calories",
-                      isNumerical: true,
+                    SizedBox(
+                      width: 220,
+                      child: CustomTextField(
+                        onSavedI: (value) {
+                          calories = value;
+                        },
+                        hint: "Calories",
+                        isNumerical: true,
+                      ),
                     ),
                   ],
                 ),

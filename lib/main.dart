@@ -4,8 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:meal_tracking_app/constants.dart';
 import 'package:meal_tracking_app/core/utils/app_router.dart';
 import 'package:meal_tracking_app/features/home/data/models/meal_model.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_tracking_app/features/home/presentation/manager/cubits/cubit/meal_cubit.dart';
 
 void main() async {
   await Hive.initFlutter();

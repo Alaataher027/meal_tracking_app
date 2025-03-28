@@ -72,51 +72,54 @@ class _YearlyDaysListState extends State<YearlyDaysList> {
 
           return GestureDetector(
             onTap: () => onDaySelected(index),
-            child: Container(
-              width: 70,
-              margin: const EdgeInsets.symmetric(horizontal: 5),
-              decoration: BoxDecoration(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    DateFormat('EEE').format(day),
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight:
-                          isSelected ? FontWeight.bold : FontWeight.normal,
-                      color: isSelected
-                          ? Colors.black
-                          : isPastDay
-                              ? Colors.grey
-                              : Colors.black87,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 12, bottom: 8),
+              child: Container(
+                width: 70,
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      DateFormat('EEE').format(day),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
+                        color: isSelected
+                            ? Colors.black
+                            : isPastDay
+                                ? Colors.grey
+                                : Colors.black87,
+                      ),
                     ),
-                  ),
-                  Opacity(
-                    opacity: !isSelected ? 0.3 : 1.0,
-                    child: const Icon(
-                      Icons.circle_outlined,
-                      size: 20,
+                    Opacity(
+                      opacity: !isSelected ? 0.3 : 1.0,
+                      child: const Icon(
+                        Icons.circle_outlined,
+                        size: 20,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    DateFormat('d MMM').format(day), // day number
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight:
-                          isSelected ? FontWeight.bold : FontWeight.normal,
-                      color: isSelected
-                          ? Colors.black
-                          : isPastDay
-                              ? Colors.grey
-                              : Colors.black87,
+                    const SizedBox(height: 5),
+                    Text(
+                      DateFormat('d MMM').format(day), // day number
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
+                        color: isSelected
+                            ? Colors.black
+                            : isPastDay
+                                ? Colors.grey
+                                : Colors.black87,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
