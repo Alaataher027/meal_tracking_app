@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:meal_tracking_app/core/utils/assets.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
+import 'package:meal_tracking_app/features/search_meals/data/models/details_model.dart';
 
 class ImageAndNameDetails extends StatelessWidget {
-  const ImageAndNameDetails({
-    super.key,
-  });
+  const ImageAndNameDetails({super.key, required this.detailsModel});
+    final DetailsModel detailsModel;
+
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       children: [
         SizedBox(
@@ -16,8 +17,8 @@ class ImageAndNameDetails extends StatelessWidget {
           width: 130,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.asset(
-              AssetsData.mealTest,
+            child: Image.network(
+              detailsModel.imagePath,
               fit: BoxFit.cover,
             ),
           ),
@@ -29,15 +30,15 @@ class ImageAndNameDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Name",
+                detailsModel.name,
                 style: Styles.textStyle18,
               ),
               Text(
-                "Category",
+                detailsModel.category,
                 style: Styles.textStyle15,
               ),
               Text(
-                "area",
+                detailsModel.area,
                 style: Styles.textStyle15,
               ),
             ],

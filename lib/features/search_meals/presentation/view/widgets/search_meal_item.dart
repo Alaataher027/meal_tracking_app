@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meal_tracking_app/core/utils/app_router.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
 import 'package:meal_tracking_app/features/search_meals/data/models/search_result_model.dart';
+import 'package:meal_tracking_app/features/search_meals/presentation/manager/cubits/details_cubit/details_cubit.dart';
 
 class SearchMealItem extends StatelessWidget {
   final SearchResultModel searchResultModel;
@@ -13,7 +15,12 @@ class SearchMealItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.KSearchDetailsView);
+        context
+            .read<DetailsCubit>()
+            .getDetails(mealName: searchResultModel.name);
+        GoRouter.of(context).push(
+          AppRouter.KSearchDetailsView,
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(4),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:meal_tracking_app/features/search_meals/data/models/details_model.dart';
 import 'package:meal_tracking_app/features/search_meals/data/models/search_result_model.dart';
 
 class SearchService {
@@ -7,10 +8,11 @@ class SearchService {
 
   SearchService(this.dio);
 
-  Future<List<SearchResultModel>> getSearchedMeals({required String searchWord}) async {
+  Future<List<SearchResultModel>> getSearchedMeals(
+      {required String searchWord}) async {
     try {
       Response response = await dio.get("$baseUrl/search.php?s=$searchWord");
-      print(response.data); 
+      print(response.data);
 
       if (response.data['meals'] == null) {
         return [];
@@ -22,6 +24,26 @@ class SearchService {
               .toList();
 
       return searchResultList;
+    } on DioException catch (e) {
+      final String errMessage =
+          e.response?.data['error']['message'] ?? "There is an error";
+      throw Exception(errMessage);
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<DetailsModel?> getDetails({required String mealName}) async {
+    try {
+      Response response = await dio.get("$baseUrl/search.php?s=$mealName");
+      print("details: ${response.data}");
+
+      if (response.data['meals'] == null) {
+        return null;
+      }
+
+      return DetailsModel.fromJson(response.data['meals'][0]);
+      
     } on DioException catch (e) {
       final String errMessage =
           e.response?.data['error']['message'] ?? "There is an error";

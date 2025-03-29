@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:meal_tracking_app/core/utils/assets.dart';
 import 'package:meal_tracking_app/features/search_meals/data/models/search_result_model.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/search_meal_item.dart';
 
