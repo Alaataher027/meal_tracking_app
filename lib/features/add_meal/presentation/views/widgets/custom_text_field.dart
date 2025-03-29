@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
     this.onSavedS,
     this.onSavedI,
     this.onChanged,
+    this.onSubmitted,
     required this.isNumerical,
     this.icon,
   });
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String?)? onSavedS;
   final void Function(int?)? onSavedI;
   final Function(String?)? onChanged;
+  final Function(String)? onSubmitted;
   final Icon? icon;
 
   @override
@@ -34,6 +36,7 @@ class CustomTextField extends StatelessWidget {
             onSavedS?.call(value);
           }
         },
+        onFieldSubmitted: onSubmitted,
         validator: (value) {
           if (value?.isEmpty ?? true) {
             return "Field is required";
@@ -57,7 +60,8 @@ class CustomTextField extends StatelessWidget {
 
   OutlineInputBorder buildBorder([color]) {
     return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: BorderSide(color: color ?? Colors.black));
+      borderRadius: BorderRadius.circular(16),
+      borderSide: BorderSide(color: color ?? Colors.black),
+    );
   }
 }

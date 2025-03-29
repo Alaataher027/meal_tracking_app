@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_tracking_app/features/search_meals/presentation/manager/cubits/search_cubit/search_cubit.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/search_view_body.dart';
 
 class SearchView extends StatelessWidget {
@@ -7,7 +9,10 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SearchViewBody(),
+      body: BlocProvider(
+        create: (context) => SearchCubit(),
+        child: SearchViewBody(),
+      ),
     );
   }
 }
