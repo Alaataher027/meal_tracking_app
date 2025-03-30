@@ -87,7 +87,7 @@ class _YearlyDaysListState extends State<YearlyDaysList> {
                     Text(
                       DateFormat('EEE').format(day),
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight:
                             isSelected ? FontWeight.bold : FontWeight.normal,
                         color: isSelected
@@ -108,7 +108,7 @@ class _YearlyDaysListState extends State<YearlyDaysList> {
                     Text(
                       DateFormat('d MMM').format(day), // day number
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight:
                             isSelected ? FontWeight.bold : FontWeight.normal,
                         color: isSelected

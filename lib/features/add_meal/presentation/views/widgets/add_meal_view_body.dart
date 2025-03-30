@@ -32,7 +32,7 @@ class AddMealViewBody extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return AddMealForm();
+              return Expanded(child: AddMealForm());
             },
           ),
         ),

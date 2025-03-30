@@ -11,7 +11,7 @@ class MealCubit extends Cubit<MealState> {
   List<MealModel>? mealsList;
   List<MealModel> filteredMeals = [];
   int totalCalories = 0;
-  DateTime? selectedDate; // This can be null initially
+  DateTime? selectedDate;
 
   featchAllMeals() async {
     emit(MealLoading());

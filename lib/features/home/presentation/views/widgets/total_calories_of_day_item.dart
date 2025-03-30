@@ -15,55 +15,59 @@ class TotalCaloriesOfDayItem extends StatelessWidget {
         int totalCalories = BlocProvider.of<MealCubit>(context).totalCalories;
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Container(
-            height: 170,
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      DateTime today = DateTime.now();
-                      BlocProvider.of<MealCubit>(context)
-                          .filterMealsByDate(today);
-                    },
-                    icon: Icon(
-                      FontAwesomeIcons.calendarDay,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "$totalCalories",
-                            style: Styles.textStyle50,
-                          ),
-                          Text(
-                            "Total calories of the day",
-                            style: Styles.textStyle14,
-                          )
-                        ],
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    kPrimaryColor.withOpacity(0.9),
+                    const Color.fromARGB(255, 212, 212, 212)
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        DateTime today = DateTime.now();
+                        BlocProvider.of<MealCubit>(context)
+                            .filterMealsByDate(today);
+                      },
+                      icon: Icon(
+                        FontAwesomeIcons.calendarDay,
+                        color: Colors.black,
                       ),
-                      Spacer(),
-                      Icon(
-                        FontAwesomeIcons.fire,
-                        size: 65,
-                      )
-                    ],
-                  ),
-                ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "$totalCalories",
+                          style: Styles.textStyle40.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Spacer(),
+                        Icon(
+                          FontAwesomeIcons.fire,
+                          size: 50,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      "Total Calories Today",
+                      style: Styles.textStyle14.copyWith(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

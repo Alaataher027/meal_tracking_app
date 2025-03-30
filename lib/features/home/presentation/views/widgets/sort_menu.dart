@@ -10,7 +10,6 @@ class SortMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       onSelected: (value) {
-        // Call sortMeals function when a sorting option is selected
         BlocProvider.of<MealCubit>(context).sortMeals(value);
       },
       itemBuilder: (context) => [
