@@ -63,7 +63,7 @@ class TotalCaloriesOfDayItem extends StatelessWidget {
                     ),
                     SizedBox(height: 3),
                     Text(
-                      "Total Calories Today",
+                      "Total Calories of the day.",
                       style: Styles.textStyle14.copyWith(),
                     ),
                   ],
