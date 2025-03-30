@@ -4,12 +4,10 @@ import 'package:meal_tracking_app/features/search_meals/data/models/details_mode
 
 class ImageAndNameDetails extends StatelessWidget {
   const ImageAndNameDetails({super.key, required this.detailsModel});
-    final DetailsModel detailsModel;
-
+  final DetailsModel detailsModel;
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       children: [
         SizedBox(
@@ -32,6 +30,7 @@ class ImageAndNameDetails extends StatelessWidget {
               Text(
                 detailsModel.name,
                 style: Styles.textStyle18,
+                maxLines: 2,
               ),
               Text(
                 detailsModel.category,

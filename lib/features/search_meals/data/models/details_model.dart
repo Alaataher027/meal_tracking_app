@@ -52,7 +52,8 @@ class DetailsModel {
       category: json['strCategory'] ?? "Unknown Category",
       area: json['strArea'] ?? "Unknown Area",
       instructions: json['strInstructions'] ?? "No instructions available",
-      youTubeURL: json['strYoutube'] ?? "https://www.youtube.com/watch?v=3_UAxkx0u6U",
+      youTubeURL:
+          json['strYoutube'] ?? "https://www.youtube.com/watch?v=3_UAxkx0u6U",
       ingredient1: json['strIngredient1'] ?? "",
       ingredient2: json['strIngredient2'] ?? "",
       ingredient3: json['strIngredient3'] ?? "",

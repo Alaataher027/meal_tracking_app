@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_text_field.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/manager/cubits/search_cubit/search_cubit.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/filter_item.dart';
+import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/list_of_categories.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/search_meal_grid.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -26,18 +26,26 @@ class SearchViewBody extends StatelessWidget {
             }
           },
         ),
-        const ListofCatigories(),
+        const ListofCategories(),
         BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
             if (state is SearchSuccessState) {
               return SearchMealGrid(searchResultList: state.searchResultList);
             } else if (state is SearchLoadingState) {
-              return Center(child: CircularProgressIndicator());
+              return Expanded(
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                ),
+              );
             } else if (state is SearchFalureState) {
-              return Center(child: Text(state.errMessage));
+              return Expanded(child: Center(child: Text(state.errMessage)));
             } else {
-              return Container(
-                child: Text("search"),
+              return Expanded(
+                child: Center(
+                  child: Text("search"),
+                ),
               );
             }
           },
