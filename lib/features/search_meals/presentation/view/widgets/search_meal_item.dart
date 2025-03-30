@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meal_tracking_app/core/utils/app_router.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
-import 'package:meal_tracking_app/features/search_meals/data/models/search_result_model.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/manager/cubits/details_cubit/details_cubit.dart';
+import 'package:alaa_taher/core/utils/app_router.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
+import 'package:alaa_taher/features/search_meals/data/models/search_result_model.dart';
+import 'package:alaa_taher/features/search_meals/presentation/manager/cubits/details_cubit/details_cubit.dart';
 
 class SearchMealItem extends StatelessWidget {
   final SearchResultModel searchResultModel;

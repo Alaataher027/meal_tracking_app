@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:meal_tracking_app/features/search_meals/data/models/details_model.dart';
-import 'package:meal_tracking_app/features/search_meals/data/models/search_result_model.dart';
-import 'package:meal_tracking_app/features/search_meals/data/services/meal_service.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/view/detailes_view.dart';
+import 'package:alaa_taher/features/search_meals/data/models/details_model.dart';
+import 'package:alaa_taher/features/search_meals/data/models/search_result_model.dart';
+import 'package:alaa_taher/features/search_meals/data/services/meal_service.dart';
+import 'package:alaa_taher/features/search_meals/presentation/view/detailes_view.dart';
 import 'package:meta/meta.dart';
 
 part 'search_state.dart';

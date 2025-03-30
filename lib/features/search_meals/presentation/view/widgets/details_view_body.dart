@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
-import 'package:meal_tracking_app/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:meal_tracking_app/features/search_meals/data/models/details_model.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/image_and_name_details.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/open_url.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/you_tube_video_screen.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
+import 'package:alaa_taher/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:alaa_taher/features/search_meals/data/models/details_model.dart';
+import 'package:alaa_taher/features/search_meals/presentation/view/widgets/image_and_name_details.dart';
+import 'package:alaa_taher/features/search_meals/presentation/view/widgets/open_url.dart';
+import 'package:alaa_taher/features/search_meals/presentation/view/widgets/you_tube_video_screen.dart';
 
 class DetailsViewBody extends StatelessWidget {
   final DetailsModel detailsModel;

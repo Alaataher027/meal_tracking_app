@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_button.dart';
+import 'package:alaa_taher/features/add_meal/presentation/views/widgets/custom_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OpenUrl extends StatelessWidget {

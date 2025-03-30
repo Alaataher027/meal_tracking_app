@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:meal_tracking_app/constants.dart';
-import 'package:meal_tracking_app/core/utils/app_router.dart';
-import 'package:meal_tracking_app/features/home/data/models/meal_model.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/manager/cubits/details_cubit/details_cubit.dart';
+import 'package:alaa_taher/constants.dart';
+import 'package:alaa_taher/core/utils/app_router.dart';
+import 'package:alaa_taher/features/home/data/models/meal_model.dart';
+import 'package:alaa_taher/features/search_meals/presentation/manager/cubits/details_cubit/details_cubit.dart';
 
 void main() async {
   await Hive.initFlutter();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meal_tracking_app/core/utils/app_router.dart';
-import 'package:meal_tracking_app/features/splash/presentation/views/widgets/logo_widget.dart';
+import 'package:alaa_taher/core/utils/app_router.dart';
+import 'package:alaa_taher/features/splash/presentation/views/widgets/logo_widget.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});

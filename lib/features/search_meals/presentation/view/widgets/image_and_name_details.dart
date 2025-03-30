@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
-import 'package:meal_tracking_app/features/search_meals/data/models/details_model.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
+import 'package:alaa_taher/features/search_meals/data/models/details_model.dart';
 
 class ImageAndNameDetails extends StatelessWidget {
   const ImageAndNameDetails({super.key, required this.detailsModel});

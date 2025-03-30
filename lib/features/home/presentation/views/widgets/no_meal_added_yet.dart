@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
 
 class NoMealAddedYet extends StatelessWidget {
   const NoMealAddedYet({super.key});

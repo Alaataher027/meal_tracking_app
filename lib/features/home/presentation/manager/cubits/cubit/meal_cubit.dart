@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:meal_tracking_app/constants.dart';
-import 'package:meal_tracking_app/features/home/data/models/meal_model.dart';
+import 'package:alaa_taher/constants.dart';
+import 'package:alaa_taher/features/home/data/models/meal_model.dart';
 import 'package:meta/meta.dart';
 
 part 'meal_state.dart';

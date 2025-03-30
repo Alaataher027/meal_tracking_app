@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meal_tracking_app/core/utils/app_router.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
+import 'package:alaa_taher/core/utils/app_router.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, required this.title, this.icon});

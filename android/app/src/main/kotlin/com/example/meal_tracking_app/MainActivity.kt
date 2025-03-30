@@ -1,4 +1,4 @@
-package com.example.meal_tracking_app
+package com.example.alaa_taher
 
 import io.flutter.embedding.android.FlutterActivity
 

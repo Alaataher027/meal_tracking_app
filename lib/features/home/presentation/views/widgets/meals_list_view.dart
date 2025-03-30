@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_tracking_app/features/home/data/models/meal_model.dart';
-import 'package:meal_tracking_app/features/home/presentation/manager/cubits/cubit/meal_cubit.dart';
-import 'package:meal_tracking_app/features/home/presentation/views/widgets/meal_item.dart';
-import 'package:meal_tracking_app/features/home/presentation/views/widgets/no_meal_added_yet.dart';
+import 'package:alaa_taher/features/home/data/models/meal_model.dart';
+import 'package:alaa_taher/features/home/presentation/manager/cubits/cubit/meal_cubit.dart';
+import 'package:alaa_taher/features/home/presentation/views/widgets/meal_item.dart';
+import 'package:alaa_taher/features/home/presentation/views/widgets/no_meal_added_yet.dart';
 
 class MealsListView extends StatelessWidget {
   const MealsListView({super.key});

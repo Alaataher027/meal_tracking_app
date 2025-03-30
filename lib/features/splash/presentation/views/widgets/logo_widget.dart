@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
 
 class LogoWidget extends StatelessWidget {
   const LogoWidget({super.key});

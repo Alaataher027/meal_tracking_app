@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_tracking_app/constants.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
+import 'package:alaa_taher/constants.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
 
 class FilterItem extends StatelessWidget {
   const FilterItem({super.key, required this.title, required this.icon});

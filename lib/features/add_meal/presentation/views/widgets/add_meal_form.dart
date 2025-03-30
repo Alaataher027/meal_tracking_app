@@ -5,11 +5,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meal_tracking_app/core/utils/styles.dart';
-import 'package:meal_tracking_app/features/add_meal/presentation/manager/cubits/cubit/add_meal_cubit.dart';
-import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_button.dart';
-import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_text_field.dart';
-import 'package:meal_tracking_app/features/home/data/models/meal_model.dart';
+import 'package:alaa_taher/core/utils/styles.dart';
+import 'package:alaa_taher/features/add_meal/presentation/manager/cubits/cubit/add_meal_cubit.dart';
+import 'package:alaa_taher/features/add_meal/presentation/views/widgets/custom_button.dart';
+import 'package:alaa_taher/features/add_meal/presentation/views/widgets/custom_text_field.dart';
+import 'package:alaa_taher/features/home/data/models/meal_model.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AddMealForm extends StatefulWidget {
