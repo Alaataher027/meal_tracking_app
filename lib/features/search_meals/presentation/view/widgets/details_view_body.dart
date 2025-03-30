@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_tracking_app/core/utils/styles.dart';
 import 'package:meal_tracking_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:meal_tracking_app/features/search_meals/data/models/details_model.dart';
-import 'package:meal_tracking_app/features/search_meals/presentation/manager/cubits/details_cubit/details_cubit.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/image_and_name_details.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/open_url.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/you_tube_video_screen.dart';
@@ -34,7 +32,11 @@ class DetailsViewBody extends StatelessWidget {
             child: Text(detailsModel.instructions,
                 maxLines: 10, style: Styles.textStyle15),
           ),
-          YouTubeVideoScreen(videoUrl: detailsModel.youTubeURL),
+          detailsModel.youTubeURL.isNotEmpty
+              ? YouTubeVideoScreen(videoUrl: detailsModel.youTubeURL)
+              : PlaceholderWidget(
+                  txt: '"No Video Avilable!"',
+                ),
           Padding(
             padding: const EdgeInsets.only(top: 25, left: 15, right: 15),
             child: Text("Ingredients", style: Styles.textStyle18),
@@ -58,10 +60,30 @@ class DetailsViewBody extends StatelessWidget {
             child: Text("Source:", style: Styles.textStyle18),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
-            child: OpenUrl(url: detailsModel.sourceURL),
-          )
+              padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+              child: detailsModel.sourceURL.isNotEmpty
+                  ? OpenUrl(url: detailsModel.sourceURL)
+                  : PlaceholderWidget(
+                      txt: 'No Avilable Link!',
+                    ))
         ],
+      ),
+    );
+  }
+}
+
+class PlaceholderWidget extends StatelessWidget {
+  const PlaceholderWidget({super.key, required this.txt});
+  final String txt;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 5),
+      child: Center(
+        child: Text(
+          txt,
+          style: Styles.textStyle16.copyWith(color: Colors.redAccent),
+        ),
       ),
     );
   }

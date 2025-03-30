@@ -18,29 +18,46 @@ class ImageAndNameDetails extends StatelessWidget {
             child: Image.network(
               detailsModel.imagePath,
               fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                );
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Center(
+                  child: Icon(Icons.image_not_supported,
+                      size: 50, color: Colors.grey),
+                ); // placeholder
+              },
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                detailsModel.name,
-                style: Styles.textStyle18,
-                maxLines: 2,
-              ),
-              Text(
-                detailsModel.category,
-                style: Styles.textStyle15,
-              ),
-              Text(
-                detailsModel.area,
-                style: Styles.textStyle15,
-              ),
-            ],
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  detailsModel.name,
+                  style: Styles.textStyle18,
+                ),
+                Text(
+                  detailsModel.category,
+                  style: Styles.textStyle15,
+                ),
+                Text(
+                  detailsModel.area,
+                  style: Styles.textStyle15,
+                ),
+              ],
+            ),
           ),
         )
       ],

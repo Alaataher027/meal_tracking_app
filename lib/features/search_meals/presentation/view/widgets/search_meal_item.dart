@@ -32,6 +32,22 @@ class SearchMealItem extends StatelessWidget {
               child: Image.network(
                 searchResultModel.imagePath,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                    ),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Center(
+                    child: Icon(Icons.image_not_supported,
+                        size: 50, color: Colors.grey),
+                  ); // placeholder
+                },
               ),
             ),
             Padding(

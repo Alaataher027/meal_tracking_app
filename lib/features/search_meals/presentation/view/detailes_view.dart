@@ -12,7 +12,10 @@ class DetailsView extends StatelessWidget {
       body: BlocBuilder<DetailsCubit, DetailsState>(
         builder: (context, state) {
           if (state is DetailsLoadingState) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: CircularProgressIndicator(
+              color: Colors.black,
+            ));
           } else if (state is DetailsSuccessState) {
             return DetailsViewBody(
                 detailsModel:
@@ -20,7 +23,8 @@ class DetailsView extends StatelessWidget {
           } else if (state is DetailsFalureState) {
             return Center(child: Text(state.errMessage));
           }
-          return const Center(child: Text("No data available"));
+          return Expanded(
+              child: const Center(child: Text("No data available")));
         },
       ),
     );

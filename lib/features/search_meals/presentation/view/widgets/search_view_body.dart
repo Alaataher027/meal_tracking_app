@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:meal_tracking_app/features/add_meal/presentation/views/widgets/custom_text_field.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/manager/cubits/search_cubit/search_cubit.dart';
 import 'package:meal_tracking_app/features/search_meals/presentation/view/widgets/list_of_categories.dart';
@@ -44,12 +45,31 @@ class SearchViewBody extends StatelessWidget {
             } else {
               return Expanded(
                 child: Center(
-                  child: Text("search"),
+                  child: BeforeSearchWidget(),
                 ),
               );
             }
           },
         ),
+      ],
+    );
+  }
+}
+
+class BeforeSearchWidget extends StatelessWidget {
+  const BeforeSearchWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          "assets/images/before_search.svg",
+          height: 250,
+          width: 250,
+        ),
+        Text("Start Exploring New Dishes!")
       ],
     );
   }
