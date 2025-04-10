@@ -23,10 +23,7 @@ class HomeView extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      body: BlocProvider(
-        create: (context) => MealCubit(),
-        child: HomeViewBody(),
-      ),
+      body: HomeViewBody(),
     );
   }
 }

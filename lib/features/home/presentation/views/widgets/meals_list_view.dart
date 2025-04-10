@@ -19,8 +19,8 @@ class MealsListView extends StatelessWidget {
         return RefreshIndicator(
           onRefresh: () async {
             await mealCubit.featchAllMeals();
-            mealCubit
-                .filterMealsByDate(mealCubit.selectedDate ?? DateTime.now());
+            // mealCubit
+            //     .filterMealsByDate(mealCubit.selectedDate ?? DateTime.now());
           },
           child: listOfMeals.isEmpty
               ? SingleChildScrollView(

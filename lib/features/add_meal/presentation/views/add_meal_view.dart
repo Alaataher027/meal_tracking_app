@@ -11,10 +11,7 @@ class AddMealView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: MultiBlocProvider(providers: [
-        BlocProvider(create: (context) => MealCubit()..featchAllMeals()),
-        BlocProvider(create: (context) => AddMealCubit()),
-      ], child: AddMealViewBody()),
+      body: AddMealViewBody(),
     );
   }
 }

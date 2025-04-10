@@ -16,58 +16,55 @@ class TotalCaloriesOfDayItem extends StatelessWidget {
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    kPrimaryColor.withOpacity(0.9),
-                    const Color.fromARGB(255, 212, 212, 212)
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [],
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color.fromARGB(170, 239, 238, 243),
+                  const Color.fromARGB(255, 212, 212, 212)
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        DateTime today = DateTime.now();
-                        BlocProvider.of<MealCubit>(context)
-                            .filterMealsByDate(today);
-                      },
-                      icon: Icon(
-                        FontAwesomeIcons.calendarDay,
-                        color: Colors.black,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      DateTime today = DateTime.now();
+                      BlocProvider.of<MealCubit>(context)
+                          .filterMealsByDate(today);
+                    },
+                    icon: Icon(
+                      FontAwesomeIcons.calendarDay,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "$totalCalories",
+                        style: Styles.textStyle40.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "$totalCalories",
-                          style: Styles.textStyle40.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          FontAwesomeIcons.fire,
-                          size: 50,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 3),
-                    Text(
-                      "Total Calories of the day.",
-                      style: Styles.textStyle14.copyWith(),
-                    ),
-                  ],
-                ),
+                      Spacer(),
+                      Icon(
+                        FontAwesomeIcons.fire,
+                        size: 50,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 3),
+                  Text(
+                    "Total Calories of the day.",
+                    style: Styles.textStyle14,
+                  ),
+                ],
               ),
             ),
           ),
