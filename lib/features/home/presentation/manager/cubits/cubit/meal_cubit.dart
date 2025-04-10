@@ -29,6 +29,8 @@ class MealCubit extends Cubit<MealState> {
       mealsList?.sort((a, b) => (a.mealName ?? "").compareTo(b.mealName ?? ""));
     } else if (criteria == "calories") {
       mealsList?.sort((a, b) => (a.calories ?? 0).compareTo(b.calories ?? 0));
+    } else if (criteria == "time") {
+      mealsList?.sort((a, b) => (a.dateTime!.hour).compareTo(b.dateTime!.hour));
     }
     applyFiltersAndSort();
   }
