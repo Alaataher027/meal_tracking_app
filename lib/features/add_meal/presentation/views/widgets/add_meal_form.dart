@@ -25,6 +25,7 @@ class _AddMealFormState extends State<AddMealForm> {
   int? calories;
   DateTime? selectedDate;
   File? selectedImage;
+  TimeOfDay? selectedTime;
 
   Future pickImage() async {
     if (await Permission.photos.request().isGranted ||
@@ -54,6 +55,20 @@ class _AddMealFormState extends State<AddMealForm> {
     if (picked != null) {
       setState(() {
         selectedDate = picked;
+      });
+      pickTime();
+    }
+  }
+
+  Future<void> pickTime() async {
+    TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    if (picked != null) {
+      setState(() {
+        selectedTime = picked;
       });
     }
   }
@@ -137,8 +152,8 @@ class _AddMealFormState extends State<AddMealForm> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        selectedDate != null
-                            ? "${selectedDate!.year}-${selectedDate!.month}-${selectedDate!.day}"
+                        selectedDate != null && selectedTime != null
+                            ? "${selectedDate!.year}/${selectedDate!.month}/${selectedDate!.day}   At   ${selectedTime!.hour}:${selectedTime!.minute}"
                             : "Select a Date",
                         style: Styles.textStyle16.copyWith(
                           color:
@@ -170,7 +185,13 @@ class _AddMealFormState extends State<AddMealForm> {
                         MealModel meal = MealModel(
                           mealName: mealName,
                           calories: calories,
-                          dateTime: selectedDate,
+                          dateTime: DateTime(
+                            selectedDate!.year,
+                            selectedDate!.month,
+                            selectedDate!.day,
+                            selectedTime!.hour,
+                            selectedTime!.minute,
+                          ),
                           imagePath: selectedImage!.path,
                         );
 

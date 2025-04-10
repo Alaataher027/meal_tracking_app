@@ -48,8 +48,8 @@ class MealItem extends StatelessWidget {
                         mealModel.imagePath!.isNotEmpty
                     ? Image.file(
                         File(mealModel.imagePath!),
-                        width: 110,
-                        height: 110,
+                        width: 130,
+                        height: 130,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Image.asset(
@@ -90,9 +90,19 @@ class MealItem extends StatelessWidget {
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        const Icon(FontAwesomeIcons.solidClock, size: 18),
+                        const Icon(FontAwesomeIcons.calendar, size: 18),
                         Text(
                           " ${mealModel.dateTime!.year}/${mealModel.dateTime!.month}/${mealModel.dateTime!.day}",
+                          style: Styles.textStyle16,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        const Icon(FontAwesomeIcons.solidClock, size: 18),
+                        Text(
+                          " ${mealModel.dateTime!.hour}:${mealModel.dateTime!.minute}",
                           style: Styles.textStyle16,
                         ),
                       ],
