@@ -1,3 +1,4 @@
+import 'package:alaa_taher/features/search_meals/presentation/view/widgets/shimmering_widgets/shimmering_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -36,11 +37,7 @@ class SearchMealItem extends StatelessWidget {
                   if (loadingProgress == null) {
                     return child;
                   }
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.black,
-                    ),
-                  );
+                  return ShimmeringImage();
                 },
                 errorBuilder: (context, error, stackTrace) {
                   return Center(

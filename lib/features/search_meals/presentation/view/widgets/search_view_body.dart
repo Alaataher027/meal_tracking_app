@@ -1,3 +1,4 @@
+import 'package:alaa_taher/features/search_meals/presentation/view/widgets/shimmering_widgets/search_meal_shimmer_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -33,13 +34,7 @@ class SearchViewBody extends StatelessWidget {
             if (state is SearchSuccessState) {
               return SearchMealGrid(searchResultList: state.searchResultList);
             } else if (state is SearchLoadingState) {
-              return Expanded(
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                  ),
-                ),
-              );
+              return const SearchMealShimmerGrid();
             } else if (state is SearchFalureState) {
               return Expanded(child: Center(child: Text(state.errMessage)));
             } else {

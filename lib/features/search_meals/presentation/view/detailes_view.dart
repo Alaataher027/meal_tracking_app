@@ -1,3 +1,4 @@
+import 'package:alaa_taher/features/search_meals/presentation/view/widgets/shimmering_widgets/details_shimmering_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:alaa_taher/features/search_meals/presentation/manager/cubits/details_cubit/details_cubit.dart';
@@ -12,10 +13,7 @@ class DetailsView extends StatelessWidget {
       body: BlocBuilder<DetailsCubit, DetailsState>(
         builder: (context, state) {
           if (state is DetailsLoadingState) {
-            return const Center(
-                child: CircularProgressIndicator(
-              color: Colors.black,
-            ));
+            return DetailsShimmeringLoading();
           } else if (state is DetailsSuccessState) {
             return DetailsViewBody(
                 detailsModel:

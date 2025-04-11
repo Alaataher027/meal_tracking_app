@@ -1,3 +1,4 @@
+import 'package:alaa_taher/features/search_meals/presentation/view/widgets/shimmering_widgets/shimmering_image.dart';
 import 'package:flutter/material.dart';
 import 'package:alaa_taher/core/utils/styles.dart';
 import 'package:alaa_taher/features/search_meals/data/models/details_model.dart';
@@ -22,11 +23,7 @@ class ImageAndNameDetails extends StatelessWidget {
                 if (loadingProgress == null) {
                   return child;
                 }
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                  ),
-                );
+                return ShimmeringImage();
               },
               errorBuilder: (context, error, stackTrace) {
                 return Center(
